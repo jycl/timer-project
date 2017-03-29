@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Due Date</string>
+
+    <string name="home_title">Home Fragment</string>
+    <string name="display_schedules_title">Current Schedules</string>
+    <string name="add_new_timer_title">Add New Schedule</string>
+    <string name="digital_clock_placeholder_text">00:00</string>
+    <string name="digital_date_placeholder_text">Jan 01 2017 00:00</string>
+    <string name="edit_symbol">+</string>
+    <string name="time_percentage_placeholder_text">100%</string>
+    <string name="current_date_subtitle">Start Date</string>
+    <string name="target_date_subtitle">Target Date</string>
+
+    <!--Selection Type Pager Titles-->
+    <string name="selection_picker_title">Manual</string>
+    <string name="selection_calendar_title">Calendar</string>
+
+
+</resources>
