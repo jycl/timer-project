@@ -5,13 +5,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 
-import etc.jyclapps.testproject.myapplication.Fragment.CurrentTimerFragment;
-import etc.jyclapps.testproject.myapplication.Fragment.HomeFragment;
-import etc.jyclapps.testproject.myapplication.Fragment.SelectionFragment;
+import etc.jyclapps.testproject.myapplication.fragment.CurrentTimerFragment;
+import etc.jyclapps.testproject.myapplication.fragment.HomeFragment;
+import etc.jyclapps.testproject.myapplication.fragment.SelectionFragment;
+import etc.jyclapps.testproject.myapplication.fragment.SettingsFragment;
 import etc.jyclapps.testproject.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,7 +24,11 @@ public class MainActivity extends AppCompatActivity {
     //private static final int CONTAINER_VIEW_ID = 101010;
     private String fragmentID = "fragment_";
     private int fragmentCount = 0;
+    boolean hideIcon = false;
 
+
+    //set Broadcast Receiver
+    //set Background Service
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +37,60 @@ public class MainActivity extends AppCompatActivity {
 //        frame.setId(CONTAINER_VIEW_ID);
         setContentView(R.layout.activity_main);
 
+        //set up toolbar
+        //https://developer.android.com/training/appbar/setting-up.html
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        //.setTitle("Current Schedules");
+
+
         //HomeFragment fragment = new HomeFragment();
         CurrentTimerFragment fragment = new CurrentTimerFragment();
         showFragment(fragment);
 
     }
 
+    /**
+     * Inflate toolbar menu with custom icons.
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_menu, menu);
+        if(hideIcon) {
+            menu.findItem(R.id.action_add_new_schedule).setVisible(false);
+        } else {
+            menu.findItem(R.id.action_add_new_schedule).setVisible(true);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_add_new_schedule:
+                hideIcon = true;
+                invalidateOptionsMenu();
+                openSelectionFragment();
+                return true;
+
+            case R.id.action_go_to_settings:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                hideIcon = true;
+                invalidateOptionsMenu();
+                openSettingsFragment();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
 
 //
 //    public void onClickButton() {
@@ -51,6 +108,11 @@ public class MainActivity extends AppCompatActivity {
     //show fragment where user can select start and end dates for timer (programmatically method call)
     public void openSelectionFragment() {
         SelectionFragment fragment = new SelectionFragment();
+        showFragment(fragment); //Note: ensure you have selected v4.app.Fragment
+    }
+
+    public void openSettingsFragment() {
+        SettingsFragment fragment = new SettingsFragment();
         showFragment(fragment); //Note: ensure you have selected v4.app.Fragment
     }
 
@@ -77,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void returnToMainAndReload() {
-        Log.d("", "return to main and reloading fragment");
+        Log.d("", "return to ma                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             1in and reloading fragment");
         fragmentCount--;
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.popBackStackImmediate();
@@ -101,9 +163,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        hideIcon = false; //on back ensure that add new timer can be seen
         fragmentCount--;
         FragmentManager fragmentManager = getSupportFragmentManager();
         if(fragmentManager.getFragments() != null && fragmentManager.getBackStackEntryCount() > 0) {
+            //TODO
+            //check if fragment is selectionfragment, if not, set hideIcon to false
             Log.d("", "back press scenario");
             fragmentManager.popBackStackImmediate();
         } else {

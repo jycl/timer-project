@@ -1,4 +1,4 @@
-package etc.jyclapps.testproject.myapplication.Fragment;
+package etc.jyclapps.testproject.myapplication.fragment;
 
 import android.support.v4.app.Fragment;
 import android.content.Context;
@@ -12,9 +12,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import etc.jyclapps.testproject.myapplication.activity.MainActivity;
-import etc.jyclapps.testproject.myapplication.Adapter.TimerHomeDisplayRowAdapter;
-import etc.jyclapps.testproject.myapplication.Helper.DatesDatabaseHelper;
-import etc.jyclapps.testproject.myapplication.Model.TimerDisplay;
+import etc.jyclapps.testproject.myapplication.adapter.TimerHomeDisplayRowAdapter;
+import etc.jyclapps.testproject.myapplication.helper.DatesDatabaseHelper;
+import etc.jyclapps.testproject.myapplication.model.TimerDisplay;
 import etc.jyclapps.testproject.myapplication.R;
 
 /**

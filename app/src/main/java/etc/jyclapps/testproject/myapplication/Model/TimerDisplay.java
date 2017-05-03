@@ -1,4 +1,4 @@
-package etc.jyclapps.testproject.myapplication.Model;
+package etc.jyclapps.testproject.myapplication.model;
 
 /**
  * Created by Joshua YC Leung on 1/21/2017.
@@ -11,6 +11,20 @@ public class TimerDisplay {
     public String start_datetime;
     public String end_datetime;
     public float percentage;
+
+    //Start Date Individual Parameters
+    public int start_date_day;
+    public int start_date_month;
+    public int start_date_year;
+    public int start_date_hour;
+    public int start_date_minute;
+
+    //End Date Individual Parameters
+    public int end_date_day;
+    public int end_date_month;
+    public int end_date_year;
+    public int end_date_hour;
+    public int end_date_minute;
 
     public TimerDisplay() { //(String date_started, String date_ended, float percentage_left) {
 //        this.start_date = date_started;
@@ -34,6 +48,13 @@ public class TimerDisplay {
     public void setStartDateTime(String datetime_started) {
         this.start_datetime = datetime_started;
     }
+
+//    public void setDate(int dayOfMonth, int month, int year) {
+//        end_date_day = dayOfMonth;
+//        end_date_month = month;
+//        end_date_year = year;
+//        this.percentage = 50;
+//    }
 
     public void setEndDateTime(String datetime_ended) {
         this.end_datetime = datetime_ended;

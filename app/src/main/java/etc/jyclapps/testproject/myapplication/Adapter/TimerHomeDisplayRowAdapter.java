@@ -1,4 +1,4 @@
-package etc.jyclapps.testproject.myapplication.Adapter;
+package etc.jyclapps.testproject.myapplication.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,15 +13,13 @@ import android.util.TypedValue;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.security.PrivilegedAction;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.jar.Pack200;
 
-import etc.jyclapps.testproject.myapplication.Model.TimerDisplay;
+import etc.jyclapps.testproject.myapplication.model.TimerDisplay;
 import etc.jyclapps.testproject.myapplication.R;
 
 /**

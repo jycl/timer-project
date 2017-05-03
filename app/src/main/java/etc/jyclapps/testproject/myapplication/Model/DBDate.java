@@ -1,6 +1,4 @@
-package etc.jyclapps.testproject.myapplication.Model;
-
-import java.util.Date;
+package etc.jyclapps.testproject.myapplication.model;
 
 /**
  * Created by Josh 2 on 1/21/2017.

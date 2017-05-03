@@ -1,4 +1,4 @@
-package etc.jyclapps.testproject.myapplication.Fragment;
+package etc.jyclapps.testproject.myapplication.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,8 +18,8 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import etc.jyclapps.testproject.myapplication.activity.MainActivity;
-import etc.jyclapps.testproject.myapplication.Helper.DatesDatabaseHelper;
-import etc.jyclapps.testproject.myapplication.Model.TimerDisplay;
+import etc.jyclapps.testproject.myapplication.helper.DatesDatabaseHelper;
+import etc.jyclapps.testproject.myapplication.model.TimerDisplay;
 import etc.jyclapps.testproject.myapplication.R;
 
 /**

@@ -1,4 +1,4 @@
-package etc.jyclapps.testproject.myapplication.Adapter;
+package etc.jyclapps.testproject.myapplication.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

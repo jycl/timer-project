@@ -1,28 +1,12 @@
-package etc.jyclapps.testproject.myapplication.Adapter;
+package etc.jyclapps.testproject.myapplication.adapter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import etc.jyclapps.testproject.myapplication.Fragment.SelectionFragment;
-import etc.jyclapps.testproject.myapplication.Fragment.SelectionCalendarFragment;
-import etc.jyclapps.testproject.myapplication.Model.TimerDisplay;
+import etc.jyclapps.testproject.myapplication.fragment.SelectionFragment;
+import etc.jyclapps.testproject.myapplication.fragment.SelectionCalendarFragment;
 import etc.jyclapps.testproject.myapplication.R;
 
 /**

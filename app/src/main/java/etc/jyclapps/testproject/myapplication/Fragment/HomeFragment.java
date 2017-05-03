@@ -1,4 +1,4 @@
-package etc.jyclapps.testproject.myapplication.Fragment;
+package etc.jyclapps.testproject.myapplication.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

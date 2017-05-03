@@ -1,4 +1,4 @@
-package etc.jyclapps.testproject.myapplication.Fragment;
+package etc.jyclapps.testproject.myapplication.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,8 +18,8 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import etc.jyclapps.testproject.myapplication.activity.MainActivity;
-import etc.jyclapps.testproject.myapplication.Helper.DatesDatabaseHelper;
-import etc.jyclapps.testproject.myapplication.Model.TimerDisplay;
+import etc.jyclapps.testproject.myapplication.helper.DatesDatabaseHelper;
+import etc.jyclapps.testproject.myapplication.model.TimerDisplay;
 import etc.jyclapps.testproject.myapplication.R;
 
 /**
@@ -52,6 +52,7 @@ public class SelectionNumberPickerFragment extends Fragment { //DatePicker
     private String minuteSelected;
     private String secondSelected;
 
+
     /**
      * SelectionFragment constructor called by SelectionTypeAdapter (to display various input types)
      * @return SelectionFragment
@@ -67,6 +68,7 @@ public class SelectionNumberPickerFragment extends Fragment { //DatePicker
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.selection_fragment, container, false); //example http://stackoverflow.com/questions/6495898/
+
 
         initializeView(view);
 
@@ -196,23 +198,29 @@ public class SelectionNumberPickerFragment extends Fragment { //DatePicker
         DateFormat df_selection = new SimpleDateFormat("MMddyyyyHHmm");
 
         String date_selected_string = String.valueOf(String.format(Locale.ENGLISH, "%02d", monthPicker.getValue()) + String.format(Locale.ENGLISH, "%02d", dayPicker.getValue()) + String.format(Locale.ENGLISH, "%04d", yearPicker.getValue()));
-        String time_selected_string = String.valueOf(String.format(Locale.ENGLISH, "%02d", hourPicker.getValue()) + String.format(Locale.ENGLISH, "%02d", minutePicker.getValue()));
         String date_selected_end_string = String.valueOf(String.format(Locale.ENGLISH, "%02d", monthPickerEnd.getValue()) + String.format(Locale.ENGLISH, "%02d", dayPickerEnd.getValue()) + String.format(Locale.ENGLISH, "%04d", yearPickerEnd.getValue()));
+
+        String time_selected_string = String.valueOf(String.format(Locale.ENGLISH, "%02d", hourPicker.getValue()) + String.format(Locale.ENGLISH, "%02d", minutePicker.getValue()));
         String time_selected_end_string = String.valueOf(String.format(Locale.ENGLISH, "%02d", hourPickerEnd.getValue()) + String.format(Locale.ENGLISH, "%02d", minutePickerEnd.getValue()));
 
         //String date_selected_end_string = String.valueOf(monthPickerEnd.getValue()) + dayPickerEnd.getValue() + yearPickerEnd.getValue();
         Log.d("start string", "" + date_selected_string + time_selected_string);
         Log.d("end string", "" + date_selected_end_string + time_selected_end_string);
 
+        String date_time_start_string = date_selected_string + time_selected_string;
+        String date_time_end_string = date_selected_end_string + time_selected_end_string;
+
         Date date_selected_start = new Date();
         Date date_selected_end = new Date();
 
         try {
-            date_selected_start = df_selection.parse(date_selected_string); //MMddyyyyHHmm
-            date_selected_end = df_selection.parse(date_selected_end_string); //MMddyyyyHHmm
+            date_selected_start = df_selection.parse(date_time_start_string); //MMddyyyyHHmm
+            date_selected_end = df_selection.parse(date_time_end_string); //MMddyyyyHHmm
         } catch (ParseException e) {
             //input is incorrect
             Log.d("Parse error selection", String.valueOf(e));
+            //error inputting please try again!
+            return;
         }
 
         Log.d("start selection frag", "" + date_selected_start);
@@ -224,8 +232,8 @@ public class SelectionNumberPickerFragment extends Fragment { //DatePicker
         TimerDisplay timer = new TimerDisplay();
         timer.setStartDateTime(df_month_output.format(date_selected_start));
         timer.setEndDateTime(df_month_output.format(date_selected_end));
-        timer.setCurrentDate(df_month_output.format(date_selected_start)+ " " + dayPicker.getValue() + " " + yearPicker.getValue() + " 00:00");
-        timer.setEndDate(df_month_output.format(date_selected_end)+ " " + dayPickerEnd.getValue() + " " + yearPickerEnd.getValue() + " 12:00");
+        //timer.setCurrentDate(df_month_output.format(date_selected_start)+ " " + dayPicker.getValue() + " " + yearPicker.getValue() + " 00:00");
+        //timer.setEndDate(df_month_output.format(date_selected_end)+ " " + dayPickerEnd.getValue() + " " + yearPickerEnd.getValue() + " 12:00");
         timer.setPercentage();
 
         databaseHelper.addDate(timer);

@@ -1,4 +1,4 @@
-package etc.jyclapps.testproject.myapplication.Helper;
+package etc.jyclapps.testproject.myapplication.helper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,12 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build.VERSION;
 import android.util.Log;
 
-import etc.jyclapps.testproject.myapplication.Model.DBDate;
-import etc.jyclapps.testproject.myapplication.Model.TimerDisplay;
+import etc.jyclapps.testproject.myapplication.model.TimerDisplay;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Josh 2 on 1/21/2017.
